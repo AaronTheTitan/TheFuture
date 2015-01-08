@@ -11,6 +11,7 @@
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *theFutureLabel;
 @property (strong, nonatomic) IBOutlet UILabel *thePreCogsLabel;
+@property CGPoint originalCenter;
 
 @end
 
@@ -20,6 +21,8 @@
     [super viewDidLoad];
 
     self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+    self.originalCenter = self.theFutureLabel.center;
+
 }
 - (IBAction)onDrag:(UIPanGestureRecognizer *)sender {
 
@@ -29,6 +32,15 @@
     if (CGRectContainsPoint(self.thePreCogsLabel.frame, point)) {
         self.theFutureLabel.text = @"A fictitious and incriminating future";
         [self.theFutureLabel sizeToFit];
+    }
+
+
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        [UIView animateWithDuration:1.0f animations:^{
+            self.theFutureLabel.center = self.originalCenter;
+
+
+        }];
     }
     
 }
