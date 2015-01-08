@@ -10,6 +10,7 @@
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *theFutureLabel;
+@property (strong, nonatomic) IBOutlet UILabel *thePreCogsLabel;
 
 @end
 
@@ -24,6 +25,11 @@
 
     CGPoint point = [sender locationInView:self.view];
     self.theFutureLabel.center = point;
+
+    if (CGRectContainsPoint(self.thePreCogsLabel.frame, point)) {
+        self.theFutureLabel.text = @"A fictitious and incriminating future";
+        [self.theFutureLabel sizeToFit];
+    }
     
 }
 
