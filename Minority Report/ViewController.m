@@ -20,6 +20,9 @@
 
     self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
 }
+- (IBAction)onDrag:(UIPanGestureRecognizer *)sender {
+
+}
 
 
 @end
