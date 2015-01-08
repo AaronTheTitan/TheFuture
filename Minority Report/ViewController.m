@@ -22,6 +22,9 @@
 }
 - (IBAction)onDrag:(UIPanGestureRecognizer *)sender {
 
+    CGPoint point = [sender locationInView:self.view];
+    self.theFutureLabel.center = point;
+    
 }
 
 
