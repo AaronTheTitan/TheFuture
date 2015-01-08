@@ -24,6 +24,7 @@
     self.originalCenter = self.theFutureLabel.center;
 
 }
+
 - (IBAction)onDrag:(UIPanGestureRecognizer *)sender {
 
     CGPoint point = [sender locationInView:self.view];
@@ -38,11 +39,14 @@
     if (sender.state == UIGestureRecognizerStateEnded) {
         [UIView animateWithDuration:1.0f animations:^{
             self.theFutureLabel.center = self.originalCenter;
-
-
+        } completion:^(BOOL finished) {
+            if (finished) {
+                self.theFutureLabel.backgroundColor = [UIColor orangeColor];
+                self.theFutureLabel.textColor = [UIColor blackColor];
+            }
         }];
+
     }
-    
 }
 
 
